@@ -30,6 +30,12 @@ let todos = [{
     "completed": false
 }]
 
+function addTodo(todo) {
+    // add new todo to todos array
+    // re-render todolist
+
+
+}
 
 function deletTodo(id) {
     todos = todos.filter(todo => todo.id !== id);
@@ -80,6 +86,23 @@ function setUpEvent() {
             renderTodoList(todos);
         }
     })
+
+    document.querySelector('.input-bar__submit').addEventListener('click', (e) => {
+        console.log("click add")
+        let title = document.querySelector('.input-bar__input').value;
+        console.log(title)
+        let item =
+        {
+            "userId": 1,
+            "id": (todos.length + 1),
+            "title": title,
+            "completed": false
+        }
+        todos.push(item);
+        console.log(todos);
+        generateTodoList(todos);
+        renderTodoList(todos);
+    })
 }
 
 function getTodoIdFromBtn(btnElement) {
@@ -96,4 +119,5 @@ renderHeader(title, submitText);
 renderTodoList(todos);
 
 // init Event
-setUpEvent()
+setUpEvent();
+
